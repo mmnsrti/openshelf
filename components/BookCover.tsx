@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import BookCoverSvg from "./BookCoverSvg";
 
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 
@@ -31,7 +32,7 @@ const BookCover = ({
         className
       )}
     >
-      Book
+      <BookCoverSvg coverColor={coverColor}/>
       <div
         className="absolute z-10 bg-gray-200"
         style={{ left: "12%", width: "87.5%", height: "88%" }}
