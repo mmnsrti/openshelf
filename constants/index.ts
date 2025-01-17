@@ -76,6 +76,7 @@ export const navigationLinks = [
       id: 2,
       title: "Atomic Habits",
       author: "James Clear",
+      isLoanedBook:true,
       genre: "Self-Help / Productivity",
       rating: 4.9,
       total_copies: 99,
