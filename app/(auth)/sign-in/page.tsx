@@ -8,7 +8,7 @@ const page = () => {
       type="SIGN_IN"
       schema={signInSchema}
       defaultValues={{ email: "", password: "" }}
-      onSubmit={() => console.log()}
+      onSubmit={() =>{}}
     />
   );
 };
