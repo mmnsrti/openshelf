@@ -36,31 +36,51 @@ const AuthForm = <T extends FieldValues>({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   });
-
+  const isSignIn = type === "SIGN_IN";
   // 2. Define a submit handler.
   const handelSubmit: SubmitHandler<T> = async (data) => {};
   return (
-    <div>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
+    <div className="flex flex-col gap-4">
+      <h2 className="text-3xl font-semibold text-center text-white">
+        {isSignIn
+          ? "Welcome back to open shelf"
+          : "Create your library account"}
+      </h2>
+      <p className="text-light-100">
+        {isSignIn
+          ? "Access the vast collection of resources and stay updated"
+          : "please complete all the fields and upload a valid university id to gain access to to the open shelf"}
+      </p>
+      <div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input placeholder="shadcn" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    This is your public display name.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Submit</Button>
+          </form>
+        </Form>
+        <p className="text-center text-light-100">
+          {isSignIn? "Don't have an account?" : "Already have an account?"}{" "}
+          <a href="#" className="text-blue-600">
+            {isSignIn? "Sign up" : "Sign in"}
+          </a>{" "}
+          to access the open shelf.{" "}
+        </p>
+      </div>
     </div>
   );
 };
