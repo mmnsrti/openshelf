@@ -19,6 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
   schema: ZodType<T>;
@@ -74,11 +75,12 @@ const AuthForm = <T extends FieldValues>({
           </form>
         </Form>
         <p className="text-center text-light-100">
-          {isSignIn? "Don't have an account?" : "Already have an account?"}{" "}
-          <a href="#" className="text-blue-600">
-            {isSignIn? "Sign up" : "Sign in"}
-          </a>{" "}
-          to access the open shelf.{" "}
+          {isSignIn ? "Don't have an account?" : "Already have an account?"}
+          <Link href={isSignIn ? "/sign-in" : "/sign-up"}>
+            {isSignIn ? "sign-in" : "sign-up"}
+          </Link>
+          to access the open shelf 
+          
         </p>
       </div>
     </div>
