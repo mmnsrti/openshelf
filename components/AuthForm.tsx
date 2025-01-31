@@ -54,12 +54,6 @@ const AuthForm = <T extends FieldValues>({
       });
       router.push("/");
     }
-    if (result.error) {
-      toast({
-        title: "Error",
-        description: result.error,
-        variant:"destructive"
-      });
   };
   return (
     <div className="flex flex-col gap-4">
