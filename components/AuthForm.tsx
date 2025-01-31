@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   DefaultValues,
   FieldValues,
+  Path,
   SubmitHandler,
   useForm,
   UseFormReturn,
@@ -72,7 +73,7 @@ const AuthForm = <T extends FieldValues>({
                     </FormLabel>
                     <FormControl>
                       {field.name === "universityCard" ? (
-                        <ImageUpload />
+                        <ImageUpload onFileChange={field.onChange} />
                       ) : (
                         <Input
                           required
@@ -90,7 +91,9 @@ const AuthForm = <T extends FieldValues>({
               />
             ))}
 
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="form-btn">
+              {isSignIn ? "Sign in " : "Sign up"}
+            </Button>
           </form>
         </Form>
         <p className="text-center text-light-100">
