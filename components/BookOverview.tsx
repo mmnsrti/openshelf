@@ -4,7 +4,6 @@ import { Button } from "./ui/button";
 import BookCover from "./BookCover";
 
 const BookOverview = ({
-  id,
   title,
   author,
   genre,
@@ -14,8 +13,6 @@ const BookOverview = ({
   description,
   color,
   cover,
-  video,
-  summary,
 }: Book) => {
   return (
     <section className="book-overview">
@@ -57,7 +54,6 @@ const BookOverview = ({
           />
         </div>
         <div className="absolute right-16 top-10 rotate-12 opacity-40 max-sm:hidden">
-      
           <BookCover variant="wide" coverColor={color} coverImage={cover} />
         </div>
       </div>
