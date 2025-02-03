@@ -36,7 +36,7 @@ const AuthForm = <T extends FieldValues>({
   schema,
   defaultValues,
   onSubmit,
-}: Props<T>) => {
+}: Props<T>) => { 
   const router = useRouter();
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
