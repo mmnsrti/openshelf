@@ -8,7 +8,7 @@ import React from "react";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Session } from "next-auth";
 
-const SideBar = ({ session }: { session: Session }) => {
+const SideBar = ({ session }: { session: Session | null }) => {
   const pathName = usePathname();
 
   return (
@@ -54,16 +54,16 @@ const SideBar = ({ session }: { session: Session }) => {
             );
           })}
         </div>
-        <div className="user">
-          <Avatar>
-            <AvatarFallback className="text-white bg-slate-600 ">
-              {getInitialized(session?.user?.name || "")}
-            </AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col max-md:hidden">
-            <p>{session?.user?.name}</p>
-            <p>{session?.user?.email}</p>
-          </div>
+      </div>
+      <div className="user">
+        <Avatar>
+          <AvatarFallback className="text-white bg-slate-600 ">
+            {getInitialized(session?.user?.name || "")}
+          </AvatarFallback>
+        </Avatar>
+        <div className="flex flex-col max-md:hidden">
+          <p>{session?.user?.name}</p>
+          <p>{session?.user?.email}</p>
         </div>
       </div>
     </div>
