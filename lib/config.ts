@@ -3,6 +3,7 @@ const config = {
     apiEndPoint: process.env.NEXT_PUBLIC_API_ENDPOINT!,
     databaseUrl: process.env.DATABASE_URL!,
     prodapiendpoint: process.env.NEXT_PUBLIC_PROD_API_ENDPOINT!,
+    resend: process.env.RESEND_TOKEN!,
     upstash: {
       redisUrl: process.env.UPSTASH_REDIS_REST_URL!,
       redisToken: process.env.UPSTASH_REDIS_REST_TOKEN!,
