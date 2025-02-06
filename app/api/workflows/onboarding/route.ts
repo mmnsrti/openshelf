@@ -24,24 +24,32 @@ export const { POST } = serve<InitialData>(async (context) => {
     });
   });
 
-  await context.sleep("wait-for-3-days", 60 * 60 * 24 * 3);
+  await context.sleep("wait-for-3-days", THREE_DAY_IN_MS);
 
   while (true) {
     const state = await context.run("check-user-state", async () => {
-      return await getUserState();
+      return await getUserState(email);
     });
 
     if (state === "non-active") {
       await context.run("send-email-non-active", async () => {
-        await sendEmail("Email to non-active users", email);
+        await sendEmail({
+          email,
+          subject: "are you still there?",
+          body: `hey ${fullName} we miss you`,
+        });
       });
     } else if (state === "active") {
       await context.run("send-email-active", async () => {
-        await sendEmail("Send newsletter to active users", email);
+        await sendEmail({
+          email,
+          subject: "welcome back",
+          body: `hey ${fullName} welcome back`,
+        });
       });
     }
 
-    await context.sleep("wait-for-1-month", 60 * 60 * 24 * 30);
+    await context.sleep("wait-for-1-month", ONE_MONTH_IN_MS);
   }
 });
 
