@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Session } from "next-auth";
 
 const SideBar = ({ session }: { session: Session | null }) => {
-  const pathName = usePathname();
+  const pathName = usePathname();   
 
   return (
     <div className="admin-sidebar">
