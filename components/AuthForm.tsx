@@ -8,7 +8,7 @@ import {
   useForm,
   UseFormReturn,
 } from "react-hook-form";
-import {  ZodType } from "zod";
+import { ZodType } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -36,7 +36,7 @@ const AuthForm = <T extends FieldValues>({
   schema,
   defaultValues,
   onSubmit,
-}: Props<T>) => { 
+}: Props<T>) => {
   const router = useRouter();
   const form: UseFormReturn<T> = useForm({
     resolver: zodResolver(schema),
