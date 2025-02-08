@@ -1,8 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  useForm,
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validation";
 import { Textarea } from "@/components/ui/textarea";
+import FileUpload from "@/components/FileUpload";
 interface Props extends Partial<Book> {
   type?: "create" | "update";
 }
@@ -158,7 +157,16 @@ const BookForm = ({ type, ...book }: Props) => {
                   <FormLabel className="text-base font-normal text-dark-500">
                     Cover Image URL
                   </FormLabel>
-                  <FormControl></FormControl>
+                  <FormControl>
+                    <FileUpload
+                      accept="image/*"
+                      folder="books/covers"
+                      placeholder="Upload a Book Cover"
+                      type="image"
+                      variant="light"
+                      onFileChange={field.onChange}
+                    />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
@@ -213,7 +221,16 @@ const BookForm = ({ type, ...book }: Props) => {
                   <FormLabel className="text-base font-normal text-dark-500">
                     Book Trailer
                   </FormLabel>
-                  <FormControl></FormControl>
+                  <FormControl>
+                    <FileUpload
+                      accept="video/*"
+                      folder="books/videos"
+                      placeholder="Upload a Book Trailer"
+                      type="video"
+                      variant="light"
+                      onFileChange={field.onChange}
+                    />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
@@ -239,9 +256,9 @@ const BookForm = ({ type, ...book }: Props) => {
                 </FormItem>
               )}
             />
-              <Button type="submit" className="book-form_btn text-white">
-                Add book to library
-              </Button>
+            <Button type="submit" className="book-form_btn text-white">
+              Add book to library
+            </Button>
           </form>
         </Form>
       </div>
