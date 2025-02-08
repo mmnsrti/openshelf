@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validation";
 import { Textarea } from "@/components/ui/textarea";
 import FileUpload from "@/components/FileUpload";
+import ColorPicker from "../ColorPicker";
 interface Props extends Partial<Book> {
   type?: "create" | "update";
 }
@@ -180,12 +181,9 @@ const BookForm = ({ type, ...book }: Props) => {
                     Cover Color
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      required
-                      placeholder="Enter cover color"
-                      {...field}
-                      className="book-form_input"
-                      type="color"
+                    <ColorPicker
+                      onPickerChange={field.onChange}
+                      value={field.value}
                     />
                   </FormControl>
                   <FormMessage />
