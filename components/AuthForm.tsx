@@ -84,7 +84,14 @@ const AuthForm = <T extends FieldValues>({
                     </FormLabel>
                     <FormControl>
                       {field.name === "universityCard" ? (
-                        <FileUpload onFileChange={field.onChange} />
+                        <FileUpload
+                          onFileChange={field.onChange}
+                          accept="image/*"
+                          placeholder="Upload your ID image"
+                          folder="ids"
+                          type="image"
+                          variant="dark"
+                        />
                       ) : (
                         <Input
                           required

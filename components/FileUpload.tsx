@@ -1,6 +1,6 @@
 "use client";
 import config from "@/lib/config";
-import { IKImage, ImageKitProvider, IKUpload } from "imagekitio-next";
+import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekitio-next";
 import { useRef, useState } from "react";
 import { Button } from "./ui/button";
 import Image from "next/image";
@@ -139,9 +139,8 @@ const FileUpload = ({
         {file && (
           <p className={cn(styles.text, "upload-filename")}>{file.filePath}</p>
         )}
-        {file && <p className="upload-filename">{file.filePath}</p>}
       </Button>
-      {progress > 0 && (
+      {progress > 0 && progress < 100 && (
         <div className="w-full rounded-full bg-green-200">
           <div className="progress" style={{ width: `${progress}%` }}>
             {progress}%
@@ -149,14 +148,20 @@ const FileUpload = ({
         </div>
       )}
 
-      {file && (
+      {file && type === "image" ? (
         <IKImage
           alt={file.filePath}
           path={file.filePath}
           width={200}
           height={200}
         />
-      )}
+      ) : type === "video" ? (
+        <IKVideo
+          path={file?.filePath}
+          className="w-full h-96 rounded-xl"
+          controls
+        />
+      ) : null}
     </ImageKitProvider>
   );
 };
