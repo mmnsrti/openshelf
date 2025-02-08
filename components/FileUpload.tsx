@@ -13,7 +13,7 @@ interface Props {
   folder: string;
   variant: "dark" | "light";
   onFileChange: (file: string) => void;
-  value: string;
+  value: (file: string) => void;
 }
 const authenticator = async () => {
   try {
