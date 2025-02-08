@@ -166,6 +166,7 @@ const BookForm = ({ type, ...book }: Props) => {
                       type="image"
                       variant="light"
                       onFileChange={field.onChange}
+                      value={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />

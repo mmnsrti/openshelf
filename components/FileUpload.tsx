@@ -13,6 +13,7 @@ interface Props {
   folder: string;
   variant: "dark" | "light";
   onFileChange: (file: string) => void;
+  value: string;
 }
 const authenticator = async () => {
   try {
@@ -40,6 +41,7 @@ const FileUpload = ({
   accept,
   placeholder,
   folder,
+  value,
   variant,
   onFileChange,
 }: Props) => {
