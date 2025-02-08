@@ -13,7 +13,7 @@ interface Props {
   folder: string;
   variant: "dark" | "light";
   onFileChange: (file: string) => void;
-  value: (file: string) => void;
+  value?: string;
 }
 const authenticator = async () => {
   try {
@@ -46,7 +46,9 @@ const FileUpload = ({
   onFileChange,
 }: Props) => {
   const ikUploadRef = useRef(null);
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [file, setFile] = useState<{ filePath: string | null }>({
+    filePath: value ?? null,
+  });
   const { toast } = useToast();
   const [progress, setProgress] = useState(0);
   const styles = {
