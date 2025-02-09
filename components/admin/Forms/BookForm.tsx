@@ -17,6 +17,8 @@ import { bookSchema } from "@/lib/validation";
 import { Textarea } from "@/components/ui/textarea";
 import FileUpload from "@/components/FileUpload";
 import ColorPicker from "../ColorPicker";
+import { createBook } from "@/lib/admin/actions/book";
+import { toast } from "@/hooks/use-toast";
 interface Props extends Partial<Book> {
   type?: "create" | "update";
 }
@@ -39,7 +41,20 @@ const BookForm = ({ type, ...book }: Props) => {
   });
   // 2. Define a submit handler.
   const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-    console.log(values)
+    const result = await createBook(values);
+    if (result.success) {
+      toast({
+        title: "Book Created",
+        description: "Your book has been created successfully!",
+      });
+      router.push(`/admin/books/${result.data.id}`);
+    } else {
+      toast({
+        title: "Error Creating Book",
+        description: "There was an error creating your book. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
   return (
     <div className="flex flex-col gap-4">

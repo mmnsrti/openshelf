@@ -8,6 +8,13 @@
       "when": 1738333211470,
       "tag": "0000_graceful_viper",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1739073817182,
+      "tag": "0001_smart_blacklash",
+      "breakpoints": true
     }
   ]
 }
