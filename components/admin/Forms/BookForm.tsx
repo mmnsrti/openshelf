@@ -38,7 +38,9 @@ const BookForm = ({ type, ...book }: Props) => {
     },
   });
   // 2. Define a submit handler.
-  const onSubmit = async (values: z.infer<typeof bookSchema>) => {};
+  const onSubmit = async (values: z.infer<typeof bookSchema>) => {
+    console.log(values)
+  };
   return (
     <div className="flex flex-col gap-4">
       <div>
