@@ -5,14 +5,15 @@ import BookCover from "./BookCover";
 
 const BookOverview = ({
   title,
+  userId,
   author,
   genre,
   rating,
-  total_copies,
-  available_copies,
+  totalCopies,
+  availableCopies,
   description,
-  color,
-  cover,
+  coverColor,
+  coverUrl,
 }: Book) => {
   return (
     <section className="book-overview">
@@ -35,7 +36,7 @@ const BookOverview = ({
         </div>
         <div className="book-copies">
           <p>
-            {available_copies} available copies / {total_copies} total copies
+            {availableCopies} available copies / {totalCopies} total copies
           </p>
         </div>
         <p className="book-description">{description}</p>
@@ -49,12 +50,16 @@ const BookOverview = ({
           <BookCover
             variant="wide"
             className="z-10"
-            coverColor={color}
-            coverImage={cover}
+            coverColor={coverColor}
+            coverImage={coverUrl}
           />
         </div>
         <div className="absolute right-16 top-10 rotate-12 opacity-40 max-sm:hidden">
-          <BookCover variant="wide" coverColor={color} coverImage={cover} />
+          <BookCover
+            variant="wide"
+            coverColor={coverColor}
+            coverImage={coverUrl}
+          />
         </div>
       </div>
     </section>
