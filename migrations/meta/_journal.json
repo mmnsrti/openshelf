@@ -15,6 +15,13 @@
       "when": 1739073817182,
       "tag": "0001_smart_blacklash",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1739185904814,
+      "tag": "0002_burly_otto_octavius",
+      "breakpoints": true
     }
   ]
 }
